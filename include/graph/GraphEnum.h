@@ -2,17 +2,14 @@
 // 周漫
 // 2020081219:43
 
-
 #pragma once
 #ifndef DATASTRUCTURE_GRAPH_GRAPHENUM_H_
 #define DATASTRUCTURE_GRAPH_GRAPHENUM_H_
 
-namespace my_dsa {
+namespace simple_dsa {
 
-	enum class VStatusEnum { UNDISCOVERED, DISCOVERED, VISITED };
+enum class VStatus { UNDISCOVERED, DISCOVERED, VISITED };
 
-	enum class ETypeEnum { UNDETERMINED, TREE, CROSS, FORWARD, BACKWARD };
-}
-#endif //DATASTRUCTURE_GRAPH_GRAPHENUM_H_
-
-	
+enum class EType { UNDETERMINED, TREE, CROSS, FORWARD, BACKWARD };
+}  // namespace simple_dsa
+#endif  // DATASTRUCTURE_GRAPH_GRAPHENUM_H_

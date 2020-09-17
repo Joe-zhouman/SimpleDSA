@@ -1,9 +1,28 @@
+/*********************SimpleDSA************************/
+/*    A simple implemention of `data structure and    */
+/*  algorithm` in Cpp form                            */
+/*********************About Me*************************/
+/* *Author*     : Joe, Zhou Man                       */
+/* *Email*      : man.man.man.man.a@gmail.com         */
+/* *Email*      : joe_zhouman@foxmail.com             */
+/* *QQ*         : 1592020915                          */
+/* *Weibo*      : @zhouman_LFC                        */
+/* *Twitter*    : @zhouman_LFC                        */
+/* *Tiktok*     : @JOE.ZM                             */
+/* *Website*    : www.joezhouman.com                  */
+/* *Github*     : https://github.com/Joe-zhouman      */
+/* *LeetCode*   : https://leetcode-cn.com/u/joe_zm/   */
+/* *Bilibili*   : https://space.bilibili.com/2743678  */
+/******************************************************/
+/*                  不务正业的科研狗                     */
+/*            You'll never walk alone                 */
+/******************************************************/
 #pragma once
 #include "MethodEnum.h"
-#include <stack>
-#include <queue>
+#include "../stack/Stack.h"
+#include "../queue/Queue.h"
 
-namespace my_dsa {
+namespace simple_dsa {
 	template <typename T>
 	class BinNode {
 
@@ -27,11 +46,11 @@ namespace my_dsa {
 		void PostGoStart(BinNode<T>* x, Visit& vst);
 
 		template <typename Visit>
-		static void VisitAlongLeftBranch(BinNode<T>* x, Visit& vst, std::stack<BinNode<T>*>& s);
+		static void VisitAlongLeftBranch(BinNode<T>* x, Visit& vst, Stack<BinNode<T>*>& s);
 		template <typename Visit>
-		static void GoAlongLeftBranch(BinNode<T>* x, std::stack<BinNode<T>*>& s);
+		static void GoAlongLeftBranch(BinNode<T>* x, Stack<BinNode<T>*>& s);
 		template <typename Visit>
-		static void GoStart(std::stack<BinNode<T>*>& s);
+		static void GoStart(Stack<BinNode<T>*>& s);
 	public:
 		T data_;
 		BinNode<T>* parent_;

@@ -8,30 +8,30 @@
 #define DATASTRUCTURE_GRAPH_GRAPH_H_
 
 #include "GraphEnum.h"
-#include <stack>
-#include <queue>
+#include "../stack/Stack.h"
+#include "../queue/Queue.h"
 
-namespace my_dsa {
+namespace simple_dsa {
 
 
     template<typename Tv, typename Te>
     class Graph {
         void Reset() {
             for (auto i = 0; i < v_; ++i) {
-                Status(i) = VStatusEnum::UNDISCOVERED;
+                Status(i) = VStatus::UNDISCOVERED;
                 DTime(i) = FTime(i) = -1;
                 Parent(i) = -1;
                 Priority(i) = INT_MAX;
                 for (auto j = 0; j < v_; ++j) {
                     if (Exist(i, j))
-                        Type(i, j) = ETypeEnum::UNDETERMINED;
+                        Type(i, j) = EType::UNDETERMINED;
                 }
             }
         }
         void bfs(int, int&);
         void dfs(int, int&);
-        void bcc(int, int&, std::stack<int>&);
-        bool t_sort(int, int&, std::stack<Tv>*);
+        void bcc(int, int&, Stack<int>&);
+        bool t_sort(int, int&, Stack<Tv>*);
         template<typename Pu>
         void pfs(int, Pu);
     public:
@@ -44,7 +44,7 @@ namespace my_dsa {
         virtual int OutDegree(int) = 0;
         virtual int FirstNbr(int) = 0;
         virtual int NextNbr(int, int) = 0;
-        virtual VStatusEnum& Status(int) = 0;
+        virtual VStatus& Status(int) = 0;
         virtual int& DTime(int) = 0;
         virtual int& FTime(int) = 0;
         virtual int& Parent(int) = 0;
@@ -54,13 +54,13 @@ namespace my_dsa {
         virtual bool Exist(int, int) = 0;
         virtual void Insert(Te const&, int, int, int) = 0;
         virtual Te Remove(int, int) = 0;
-        virtual ETypeEnum& Type(int, int) = 0;
+        virtual EType& Type(int, int) = 0;
         virtual Te& EdgeData(int, int) = 0;
         virtual int& Weight(int, int) = 0;
 
         void BFS(int);
         void DFS(int);
-        std::stack<Tv>* TSort(int);
+        Stack<Tv>* TSort(int);
         void BCC(int);
         void Prim(int);
         void Dijkstra(int);
