@@ -21,13 +21,13 @@
 namespace simple_dsa {
 
 template <typename T>
-int BinTree<T>::UpdateHeight(BinNode<T>* x) {
+int BinTree<T>::UpdateHeight(BinNodePosi<T> x) {
     return x->height_ = 1 + std::max(x->left_child_->Stature(),
                                      x->right_child_->Stature());
 }
 
 template <typename T>
-void BinTree<T>::UpdateHeightAbove(BinNode<T>* x) {
+void BinTree<T>::UpdateHeightAbove(BinNodePosi<T> x) {
     while (x) {
         if (x->height_ == UpdateHeight(x)) return;
         x = x->parent_;

@@ -21,7 +21,7 @@
 namespace simple_dsa {
 
 	template <typename T>
-	static int RemoveAt(BinNode<T>* x) {
+	static int RemoveAt(BinNodePosi<T> x) {
 		if (!x)
 			return 0;
 		int n = 1 + RemoveAt(x->left_child_) + RemoveAt(x->right_child_);
@@ -31,7 +31,7 @@ namespace simple_dsa {
 	};
 
 	template <typename T>
-	int BinTree<T>::Remove(BinNode<T>* x) {
+	int BinTree<T>::Remove(BinNodePosi<T> x) {
 		FromParentTo(x) = nullptr;
 		UpdateHeightAbove(x->parent_);
 		const int n = RemoveAt(x);
@@ -40,7 +40,7 @@ namespace simple_dsa {
 	}
 
 	template <typename T>
-	BinTree<T>* BinTree<T>::Secede(BinNode<T>* x) {
+	BinTree<T>* BinTree<T>::Secede(BinNodePosi<T> x) {
 		FromParentTo(x) = nullptr;
 		UpdateHeightAbove(x->parent_);
 		BinTree<T>* t = new BinTree<T>;

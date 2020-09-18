@@ -22,10 +22,10 @@ namespace simple_dsa {
 	template <typename T>
 	template <typename Visit>
 	void BinNode<T>::TraversalLevel(Visit& vst) {
-		Queue<BinNode<T>*> q;
+		Queue<BinNodePosi<T>> q;
 		q.Enqueue(this);
 		while (!q.empty()) {
-			BinNode<T>* x = q.Dequeue();
+			BinNodePosi<T> x = q.Dequeue();
 			vst(x->data_);
 			if (x->HasLeftChild())
 				q.push(x->left_child_);

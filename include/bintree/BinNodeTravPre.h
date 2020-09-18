@@ -40,7 +40,7 @@ void BinNode<T>::TraversalPre(Visit& vst, TraversalMethod method) {
 
 template <typename T>
 template <typename Visit>
-void BinNode<T>::PreRecur(BinNode<T>* x, Visit& vst) {
+void BinNode<T>::PreRecur(BinNodePosi<T> x, Visit& vst) {
     if (!x) return;
     vst(x->data_);
     PreRecur(x->left_child_, vst);
@@ -49,8 +49,8 @@ void BinNode<T>::PreRecur(BinNode<T>* x, Visit& vst) {
 
 template <typename T>
 template <typename Visit>
-void BinNode<T>::PreTail(BinNode<T>* x, Visit& vst) {
-    Stack<BinNode<T>*> node_stack;
+void BinNode<T>::PreTail(BinNodePosi<T> x, Visit& vst) {
+    Stack<BinNodePosi<T>> node_stack;
     if (x) node_stack.push(x);
     while (!node_stack.empty()) {
         x = node_stack.Pop();
@@ -62,8 +62,8 @@ void BinNode<T>::PreTail(BinNode<T>* x, Visit& vst) {
 
 template <typename T>
 template <typename Visit>
-void BinNode<T>::VisitAlongLeftBranch(BinNode<T>* x, Visit& vst,
-                                      Stack<BinNode<T>*>& s) {
+void BinNode<T>::VisitAlongLeftBranch(BinNodePosi<T> x, Visit& vst,
+                                      Stack<BinNodePosi<T>>& s) {
     while (x) {
         vst(x->data_);
         s.push(x->right_child_);
@@ -73,8 +73,8 @@ void BinNode<T>::VisitAlongLeftBranch(BinNode<T>* x, Visit& vst,
 
 template <typename T>
 template <typename Visit>
-void BinNode<T>::PreVisitAlong(BinNode<T>* x, Visit& vst) {
-    Stack<BinNode<T>*> node_stk;
+void BinNode<T>::PreVisitAlong(BinNodePosi<T> x, Visit& vst) {
+    Stack<BinNodePosi<T>> node_stk;
     while (true) {
         VisitAlongLeftBranch(x, vst, node_stk);
         if (node_stk.empty()) return;

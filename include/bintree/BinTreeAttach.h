@@ -21,7 +21,7 @@
 namespace simple_dsa {
 
 	template <typename T>
-	BinNode<T>* BinTree<T>::AttachAsRightChild(BinNode<T>* x, BinTree<T>*& t) {
+	BinNodePosi<T> BinTree<T>::AttachAsRightChild(BinNodePosi<T> x, BinTree<T>*& t) {
 		if (x->right_child_ = t->root_)
 			x->right_child_->parent_ = x;
 		size_ += t->size_;
@@ -34,7 +34,7 @@ namespace simple_dsa {
 	}
 
 	template <typename T>
-	BinNode<T>* BinTree<T>::AttachAsLeftChild(BinNode<T>* x, BinTree<T>*& t) {
+	BinNodePosi<T> BinTree<T>::AttachAsLeftChild(BinNodePosi<T> x, BinTree<T>*& t) {
 		if (x->left_child_ = t->root_)
 			x->left_child_->parent_ = x;
 		size_ += t->size_;

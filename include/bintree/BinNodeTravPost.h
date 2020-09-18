@@ -34,7 +34,7 @@ namespace simple_dsa {
 
 	template <typename T>
 	template <typename Visit>
-	void BinNode<T>::PostRecur(BinNode<T>* x, Visit& vst) {
+	void BinNode<T>::PostRecur(BinNodePosi<T> x, Visit& vst) {
 		if (!x)
 			return;
 		InRecur(x->left_child_, vst);
@@ -44,8 +44,8 @@ namespace simple_dsa {
 
 	template <typename T>
 	template <typename Visit>
-	void BinNode<T>::PostGoStart(BinNode<T>* x, Visit& vst) {
-		Stack<BinNode<T>*> s;
+	void BinNode<T>::PostGoStart(BinNodePosi<T> x, Visit& vst) {
+		Stack<BinNodePosi<T>> s;
 		if (!x)
 			s.push(x);
 		while (s.empty()) {
@@ -58,8 +58,8 @@ namespace simple_dsa {
 
 	template <typename T>
 	template <typename Visit>
-	void BinNode<T>::GoStart(Stack<BinNode<T>*>& s) {
-		while (BinNode<T>* x = s.top()) {
+	void BinNode<T>::GoStart(Stack<BinNodePosi<T>>& s) {
+		while (BinNodePosi<T> x = s.top()) {
 			if (x->HasLeftChild()) {
 				if (x->HasRightChild())
 					s.push(x->right_child_);

@@ -39,7 +39,7 @@ void BinNode<T>::TraversalIn(Visit& vst, TraversalMethod method) {
 
 template <typename T>
 template <typename Visit>
-void BinNode<T>::InRecur(BinNode<T>* x, Visit& vst) {
+void BinNode<T>::InRecur(BinNodePosi<T> x, Visit& vst) {
     if (!x) return;
     InRecur(x->left_child_, vst);
     vst(x->data_);
@@ -48,7 +48,7 @@ void BinNode<T>::InRecur(BinNode<T>* x, Visit& vst) {
 
 template <typename T>
 template <typename Visit>
-void BinNode<T>::GoAlongLeftBranch(BinNode<T>* x, Stack<BinNode<T>*>& s) {
+void BinNode<T>::GoAlongLeftBranch(BinNodePosi<T> x, Stack<BinNodePosi<T>>& s) {
     while (x) {
         s.push(x->right_child_);
         x = x->left_child_;
@@ -57,8 +57,8 @@ void BinNode<T>::GoAlongLeftBranch(BinNode<T>* x, Stack<BinNode<T>*>& s) {
 
 template <typename T>
 template <typename Visit>
-void BinNode<T>::InGoAlong(BinNode<T>* x, Visit& vst) {
-    Stack<BinNode<T>*> node_stk;
+void BinNode<T>::InGoAlong(BinNodePosi<T> x, Visit& vst) {
+    Stack<BinNodePosi<T>> node_stk;
     while (true) {
         GoAlongLeftBranch(x, node_stk);
         if (node_stk.empty()) return;
@@ -70,7 +70,7 @@ void BinNode<T>::InGoAlong(BinNode<T>* x, Visit& vst) {
 
 template <typename T>
 template <typename Visit>
-void BinNode<T>::InSucceed(BinNode<T>* x, Visit& vst) {
+void BinNode<T>::InSucceed(BinNodePosi<T> x, Visit& vst) {
     auto back_track = false;
     while (true) {
         if (!back_track && x->HasLeftChild()) {

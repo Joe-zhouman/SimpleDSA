@@ -28,9 +28,9 @@ namespace simple_dsa {
 	class BinTree {
 	protected:
 		int size_;
-		BinNode<T>* root_;
-		virtual int UpdateHeight(BinNode<T>* x);
-		void UpdateHeightAbove(BinNode<T>* x);
+		BinNodePosi<T> root_;
+		virtual int UpdateHeight(BinNodePosi<T> x);
+		void UpdateHeightAbove(BinNodePosi<T> x);
 	public:
 		BinTree() : size_(0),
 		            root_(nullptr) { }
@@ -42,14 +42,14 @@ namespace simple_dsa {
 
 		int Size() const { return size_; }
 		bool Empty() const { return !root_; }
-		BinNode<T>* Root() const { return root_; }
-		BinNode<T>* InsertAsRoot(T const& e);
-		BinNode<T>* InsertAsLeftChild(BinNode<T>*, T const&);
-		BinNode<T>* InsertAsRightChild(BinNode<T>*, T const&);
-		BinNode<T>* AttachAsLeftChild(BinNode<T>* x, BinTree<T>*& t);
-		BinNode<T>* AttachAsRightChild(BinNode<T>* x, BinTree<T>*& t);
-		int Remove(BinNode<T>* x);
-		BinTree<T>* Secede(BinNode<T>* x);
+		BinNodePosi<T> Root() const { return root_; }
+		BinNodePosi<T> InsertAsRoot(T const& e);
+		BinNodePosi<T> InsertAsLeftChild(BinNodePosi<T>, T const&);
+		BinNodePosi<T> InsertAsRightChild(BinNodePosi<T>, T const&);
+		BinNodePosi<T> AttachAsLeftChild(BinNodePosi<T> x, BinTree<T>*& t);
+		BinNodePosi<T> AttachAsRightChild(BinNodePosi<T> x, BinTree<T>*& t);
+		int Remove(BinNodePosi<T> x);
+		BinTree<T>* Secede(BinNodePosi<T> x);
 
 		template <typename Visit>
 		void TraversalLevel(Visit& visit) {

@@ -21,13 +21,13 @@
 namespace simple_dsa {
 
 	template <typename T>
-	BinNode<T>* BinTree<T>::InsertAsRoot(T const& e) {
+	BinNodePosi<T> BinTree<T>::InsertAsRoot(T const& e) {
 		size_ = 1;
 		return root_ = new BinNode<T>(e);
 	}
 
 	template <typename T>
-	BinNode<T>* BinTree<T>::InsertAsLeftChild(BinNode<T>* x, T const& e) {
+	BinNodePosi<T> BinTree<T>::InsertAsLeftChild(BinNodePosi<T> x, T const& e) {
 		size_++;
 		x->InsertAsLeftChild(e);
 		UpdateHeightAbove(x);
@@ -35,7 +35,7 @@ namespace simple_dsa {
 	}
 
 	template <typename T>
-	BinNode<T>* BinTree<T>::InsertAsRightChild(BinNode<T>* x, T const& e) {
+	BinNodePosi<T> BinTree<T>::InsertAsRightChild(BinNodePosi<T> x, T const& e) {
 		size_++;
 		x->InsertAsRightChild(e);
 		UpdateHeightAbove(x);

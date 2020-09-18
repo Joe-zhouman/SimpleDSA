@@ -19,21 +19,20 @@
 /******************************************************/
 #pragma once
 namespace simple_dsa {
-	template <typename T>
-	BinNode<T>* BinNode<T>::Succeed() {
-		BinNode<T>* s_node = this;
-		if (s_node->HasRightChild()) {
-			s_node = s_node->right_child_;
-			while (s_node->HasLeftChild()) {
-				s_node = s_node->left_child_;
-			}
-		}
-		else {
-			while (s_node->IsRightChild()) {
-				s_node = s_node->parent_;
-			}
-			s_node = s_node->parent_;
-		}
-		return s_node;
-	}
+template <typename T>
+BinNodePosi<T> BinNode<T>::Succeed() {
+    BinNodePosi<T> s_node = this;
+    if (s_node->HasRightChild()) {
+        s_node = s_node->right_child_;
+        while (s_node->HasLeftChild()) {
+            s_node = s_node->left_child_;
+        }
+    } else {
+        while (s_node->IsRightChild()) {
+            s_node = s_node->parent_;
+        }
+        s_node = s_node->parent_;
+    }
+    return s_node;
 }
+}  // namespace simple_dsa
