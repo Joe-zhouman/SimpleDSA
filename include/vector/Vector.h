@@ -10,7 +10,7 @@ protected:
     void CopyFrom(T const *copiedArray, Rank lo, Rank hi);
     void Expand();
     void Shrink();
-    Rank Max(Rank lo, Rank hi);
+    
     Rank Bubble(Rank lo, Rank hi);
     void BubbleSort(Rank lo, Rank hi);
     void SelectionSort(Rank lo, Rank hi);
@@ -40,6 +40,10 @@ public:
     Rank Size() const { return size_; }    //规模
     bool Empty() const { return !size_; }  //判空
     int Disordered() const;
+
+    Rank Max(Rank lo, Rank hi);
+
+    Rank Max(){return Max(0,size_);}
     // 无序向量整体查找
     Rank Find(T const &e) const { return Find(e, 0, size_); }
     // 无序向量区间查找

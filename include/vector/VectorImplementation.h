@@ -1,24 +1,19 @@
 ﻿#pragma once
 
-#include "VectorCopyFrom.h"
-#include "VectorExpand.h"
-
-#include "VectorShrink.h"
-
 #include "VectorBracket.h"
+#include "VectorCopyFrom.h"
+#include "VectorDeduplicate.h"
 #include "VectorEqual.h"
-
-#include "VectorSearch.h"
+#include "VectorExpand.h"
 #include "VectorFind.h"
-
 #include "VectorInsert.h"
 #include "VectorRemove.h"
-
-#include "VectorDeduplicate.h"
-#include "VectorUniquify.h"
-
-#include "VectorTraverse.h"
-
+#include "VectorSearch.h"
+#include "VectorShrink.h"
 #include "VectorSort.h"
-#include "sort/bubble.h"
-#include "sort/merge.h"
+#include "VectorTraverse.h"
+#include "VectorUniquify.h"
+//Sort Methods
+#include "sort/Bubble.h"
+#include "sort/Merge.h"
+#include "sort/Selection.h"

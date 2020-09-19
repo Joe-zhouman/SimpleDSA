@@ -1,5 +1,5 @@
 #pragma once
-#include <istream>
+#include <iostream>
 #if !defined(_VECTOR_INIT_H_)
 #define _VECTOR_INIT_H_
 namespace simple_dsa

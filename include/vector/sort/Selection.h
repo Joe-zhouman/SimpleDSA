@@ -18,25 +18,25 @@
 /*            You'll never walk alone                 */
 /******************************************************/
 #pragma once
-#ifndef _BST_H_
-#define _BST_H_
-#include "../bintree/BinTree.h"
+#ifndef _SORT_SELECTION_H_
+#define _SORT_SELECTION_H_
 namespace simple_dsa {
-template <typename T>
-class BST : public BinTree<T> {
-private:
-protected:
-    BinNodePosi<T> hot_;
-    BinNodePosi<T> connect34(BinNodePosi<T> n1, BinNodePosi<T> n2,
-                             BinNodePosi<T> n3, BinNodePosi<T> t1,
-                             BinNodePosi<T> t2, BinNodePosi<T> t3,
-                             BinNodePosi<T> t4, );
 
-public:
-    virtual BinNodePosi<T>& Search(const T& e);
-    virtual BinNodePosi<T> Insert(const T& e);
-    virtual bool Remove(const T& e);
-};
-#include "BstImplement.h"
+template <typename T>
+Rank Vector<T>::Max(Rank lo, Rank hi) {
+    if (hi - lo < 1) return -1;
+    if (1 == hi - lo) return lo;
+    Rank max_idx = --hi;
+    while (lo < hi--) {
+        if (elem_[max_idx] < elem_[hi]) max_idx = hi;
+    }
+    return max_idx;
+}
+template <typename T>
+void Vector<T>::SelectionSort(Rank lo, Rank hi) {
+    while (1 < hi - lo) {
+        std::swap(elem_[Max(lo, hi)], elem_[--hi]);
+    }
+}
 }  // namespace simple_dsa
-#endif  //_BST_H_
+#endif  //_SORT_SELECTION_H_
